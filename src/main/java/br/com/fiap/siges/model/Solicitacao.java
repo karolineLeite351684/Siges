@@ -28,5 +28,7 @@ public class Solicitacao {
 
     private Boolean ehUmNovoColaborador;
 
-    private String infomacaoDaSolicitacao;
+    private String descricaoPedido;
+
+    private String respostaPedido;
 }
