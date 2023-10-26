@@ -4,14 +4,13 @@ import br.com.fiap.siges.enumeration.StatusDaSolicitacaoEnum;
 
 import java.time.LocalDate;
 
-public record SolicitacaoDTO(
-
-        Long id,
+public record SolicitacaoDetalhesDTO(
         String idSolicitacao,
         StatusDaSolicitacaoEnum statusSolicitacao,
         String nomeDoSolicitante,
         LocalDate dataDaSolicitacao,
         Boolean ehUmNovoColaborador,
-        String descricaoPedido
+        String descricaoPedido,
+        String respostaPedido
 ) {
 }

@@ -1,7 +1,9 @@
 package br.com.fiap.siges.service;
 
 import br.com.fiap.siges.dto.SolicitacaoDTO;
+import br.com.fiap.siges.dto.SolicitacaoDetalhesDTO;
 import br.com.fiap.siges.enumeration.StatusDaSolicitacaoEnum;
+import br.com.fiap.siges.mapper.SolicitacaoDetalhesMapper;
 import br.com.fiap.siges.mapper.SolicitacaoMapper;
 import br.com.fiap.siges.model.Solicitacao;
 import br.com.fiap.siges.repository.SolicitacaoRepository;
@@ -10,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 
 @Service
 public class SolicitacaoService {
@@ -20,11 +23,18 @@ public class SolicitacaoService {
     @Autowired
     private SolicitacaoMapper mapper;
 
+    @Autowired
+    private SolicitacaoDetalhesMapper detalhesMapper;
+
     public SolicitacaoDTO save(SolicitacaoDTO solicitacaoDTO) {
         Solicitacao solicitacao = mapper.toModel(solicitacaoDTO);
         solicitacao.setDataDaSolicitacao(LocalDate.now());
         solicitacao.setIdSolicitacao("#" + solicitacao.getDataDaSolicitacao() + "_" + solicitacao.getNomeDoSolicitante());
         solicitacao.setStatusSolicitacao(StatusDaSolicitacaoEnum.PENDENTE);
         return mapper.toDTO(repository.save(solicitacao));
+    }
+
+    public SolicitacaoDetalhesDTO findDatalhes(Long solicitacaoID){
+        return detalhesMapper.toDTO(repository.findById(solicitacaoID).orElseThrow());
     }
 }
