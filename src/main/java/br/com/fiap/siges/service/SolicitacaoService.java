@@ -1,5 +1,6 @@
 package br.com.fiap.siges.service;
 
+import br.com.fiap.siges.controller.exception.ControllerNotFoundException;
 import br.com.fiap.siges.dto.SolicitacaoDTO;
 import br.com.fiap.siges.dto.SolicitacaoDetalhesDTO;
 import br.com.fiap.siges.enumeration.StatusDaSolicitacaoEnum;
@@ -11,8 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-import java.util.Date;
-import java.util.List;
+
+import static br.com.fiap.siges.controller.exception.enumeration.ControllerNotFoundExceptionEnum.SOLICITACAO_NAO_ENCONTRADA;
 
 @Service
 public class SolicitacaoService {
@@ -34,7 +35,8 @@ public class SolicitacaoService {
         return mapper.toDTO(repository.save(solicitacao));
     }
 
-    public SolicitacaoDetalhesDTO findDatalhes(Long solicitacaoID){
-        return detalhesMapper.toDTO(repository.findById(solicitacaoID).orElseThrow());
+    public SolicitacaoDetalhesDTO findDatalhes(Long solicitacaoID) {
+        return detalhesMapper.toDTO(repository.findById(solicitacaoID).orElseThrow(() ->
+                new ControllerNotFoundException(SOLICITACAO_NAO_ENCONTRADA.getMessage())));
     }
 }
