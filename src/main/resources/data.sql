@@ -1,1 +1,0 @@
-INSERT INTO USUARIO(id, login, senha) values ( 1, 'karoline', '$2a$10$8LsoBce37did4MhxOwS8.umXq23ZCUPMEPaKi2Q0ZcH6IscZmPa4y')

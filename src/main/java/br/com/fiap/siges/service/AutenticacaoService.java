@@ -1,3 +1,4 @@
+/*
 package br.com.fiap.siges.service;
 
 import br.com.fiap.siges.repository.UsuarioRepository;
@@ -17,4 +18,4 @@ public class AutenticacaoService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return repository.findByLogin(username);
     }
-}
+}*/

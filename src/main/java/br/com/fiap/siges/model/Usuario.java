@@ -1,3 +1,4 @@
+/*
 package br.com.fiap.siges.model;
 
 import jakarta.persistence.*;
@@ -59,3 +60,4 @@ public class Usuario implements UserDetails {
         return true;
     }
 }
+*/

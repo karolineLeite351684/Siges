@@ -1,3 +1,4 @@
+/*
 package br.com.fiap.siges.security;
 
 import br.com.fiap.siges.repository.UsuarioRepository;
@@ -47,3 +48,4 @@ public class SecurityFilter extends OncePerRequestFilter {
     }
 
 }
+*/

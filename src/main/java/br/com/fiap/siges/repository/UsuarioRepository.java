@@ -1,3 +1,4 @@
+/*
 package br.com.fiap.siges.repository;
 
 import br.com.fiap.siges.model.Usuario;
@@ -6,4 +7,4 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
     UserDetails findByLogin(String login);
-}
+}*/

@@ -1,3 +1,4 @@
+/*
 package br.com.fiap.siges.controller;
 
 import br.com.fiap.siges.dto.DadosAutenticacaoDTO;
@@ -35,3 +36,4 @@ public class AutenticacaoController {
     }
 
 }
+*/

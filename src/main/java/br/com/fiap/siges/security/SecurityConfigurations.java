@@ -1,3 +1,4 @@
+/*
 package br.com.fiap.siges.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,3 +50,4 @@ public class SecurityConfigurations {
 
 
 }
+*/
