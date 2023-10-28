@@ -4,12 +4,16 @@ import br.com.fiap.siges.controller.exception.ControllerNotFoundException;
 import br.com.fiap.siges.dto.SolicitacaoDTO;
 import br.com.fiap.siges.dto.SolicitacaoDetalhesDTO;
 import br.com.fiap.siges.dto.SolicitacaoListagemDTO;
+import br.com.fiap.siges.dto.SolicitacaoListagemInternaDTO;
+import br.com.fiap.siges.dto.filter.SolicitacaoListagemInternaFilterDTO;
 import br.com.fiap.siges.enumeration.StatusDaSolicitacaoEnum;
 import br.com.fiap.siges.mapper.SolicitacaoDetalhesMapper;
+import br.com.fiap.siges.mapper.SolicitacaoListagemInternaMapper;
 import br.com.fiap.siges.mapper.SolicitacaoListagemMapper;
 import br.com.fiap.siges.mapper.SolicitacaoMapper;
 import br.com.fiap.siges.model.Solicitacao;
 import br.com.fiap.siges.repository.SolicitacaoRepository;
+import br.com.fiap.siges.specification.SolicitacaoListagemIntenaSpecification;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -35,6 +39,9 @@ public class SolicitacaoService {
     @Autowired
     private SolicitacaoListagemMapper listagemMapper;
 
+    @Autowired
+    private SolicitacaoListagemInternaMapper listagemInternaMapper;
+
     public SolicitacaoDTO save(SolicitacaoDTO solicitacaoDTO) {
         Solicitacao solicitacao = mapper.toModel(solicitacaoDTO);
         solicitacao.setDataDaSolicitacao(LocalDate.now());
@@ -50,6 +57,10 @@ public class SolicitacaoService {
 
     public Page<SolicitacaoListagemDTO> findAllListagem(Pageable page) {
         return this.repository.findAll(page).map(listagemMapper::toDTO);
+    }
+
+    public Page<SolicitacaoListagemInternaDTO> findAllListagemInterna(Pageable page,  SolicitacaoListagemInternaFilterDTO filter) {
+        return this.repository.findAll(new SolicitacaoListagemIntenaSpecification(filter), page).map(listagemInternaMapper::toDTO);
     }
 
 }
