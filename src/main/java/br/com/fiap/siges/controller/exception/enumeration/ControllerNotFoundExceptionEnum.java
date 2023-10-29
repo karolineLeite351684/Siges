@@ -5,7 +5,9 @@ import lombok.Getter;
 @Getter
 public enum ControllerNotFoundExceptionEnum {
 
-    SOLICITACAO_NAO_ENCONTRADA("Solicitação não encontrada");
+    SOLICITACAO_NAO_ENCONTRADA("Solicitação não encontrada"),
+
+    ESTOQUE_NAO_IMPORTADO("O estoque não foi importado");
 
     private final String message;
 
