@@ -1,0 +1,118 @@
+{
+	"info": {
+		"_postman_id": "483c015f-3d45-49a8-915d-2d39067a37b7",
+		"name": "Siges",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "29281993"
+	},
+	"item": [
+		{
+			"name": "Salvando uma solicitacao",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"nomeDoSolicitante\": \"Test name 2\",\r\n\t\"ehUmNovoColaborador\": false,\r\n\t\"descricaoPedido\": \"teste texto\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/solicitacoes"
+			},
+			"response": []
+		},
+		{
+			"name": "Listagem de solicitacao usuario interno",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/solicitacoes/listagem?interno=true",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"solicitacoes",
+						"listagem"
+					],
+					"query": [
+						{
+							"key": "interno",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listagem de solicitacao usuario externo",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/solicitacoes/listagem"
+			},
+			"response": []
+		},
+		{
+			"name": "Detalhes da Solicitacao",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/solicitacoes/1/detalhes"
+			},
+			"response": []
+		},
+		{
+			"name": "Salvando o estoque",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"tipo\":\"Teclado\",\r\n\t\"marca\":\"Loggi\",\r\n\t\"nome\":\"Teclado logi tech K380\",\r\n\t\"identificador\":\"24565445\",\r\n\t\"quantidade\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/estoques"
+			},
+			"response": []
+		},
+		{
+			"name": "Importando o estoque",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/KarolineLeite/Documents/Pós tech/Projeto/Estoque.xlsx"
+						}
+					]
+				},
+				"url": "http://localhost:8080/estoques/import"
+			},
+			"response": []
+		},
+		{
+			"name": "Exportando o estoque",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/estoques/export"
+			},
+			"response": []
+		}
+	]
+}
