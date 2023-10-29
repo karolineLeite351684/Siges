@@ -3,9 +3,12 @@ package br.com.fiap.siges.service;
 import br.com.fiap.siges.controller.exception.ControllerNotFoundException;
 import br.com.fiap.siges.controller.exception.enumeration.ControllerNotFoundExceptionEnum;
 import br.com.fiap.siges.dto.EstoqueDTO;
+import br.com.fiap.siges.dto.file.EstoqueFileDTO;
 import br.com.fiap.siges.mapper.EstoqueMapper;
+import br.com.fiap.siges.mapper.file.EstoqueFileMapper;
 import br.com.fiap.siges.model.Estoque;
 import br.com.fiap.siges.repository.EstoqueRepository;
+import jakarta.servlet.http.HttpServletResponse;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -27,6 +30,9 @@ public class EstoqueService {
 
     @Autowired
     private EstoqueMapper mapper;
+
+    @Autowired
+    private EstoqueExportService exportService;
 
     public EstoqueDTO save(EstoqueDTO estoqueDTO) {
         Estoque estoque = mapper.toModel(estoqueDTO);
@@ -63,7 +69,7 @@ public class EstoqueService {
                             row.getCell(1).getStringCellValue(),
                             row.getCell(2).getStringCellValue(),
                             row.getCell(3).getStringCellValue(),
-                            qtd);
+                                                        qtd);
                     productList.add(estoqueDTO);
                 }
             }
@@ -71,5 +77,10 @@ public class EstoqueService {
         } catch (IOException e) {
            throw new ControllerNotFoundException(ControllerNotFoundExceptionEnum.ESTOQUE_NAO_IMPORTADO.getMessage());
         }
+
+    }
+
+    public void exportToExcel(HttpServletResponse response) throws IOException {
+        exportService.exportToExcel(response, repository.findAll());
     }
 }

@@ -12,8 +12,4 @@ public interface EstoqueMapper {
 
     Estoque toModel(EstoqueDTO estoqueDTO);
 
-    List<Estoque> toListModel(List<EstoqueDTO> estoques);
-
-    List<EstoqueDTO> toListDTO(List<Estoque> estoques);
-
 }
